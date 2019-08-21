@@ -68,7 +68,7 @@ tab2=['azerty',2,'sdf',9];
 
 interface meth{
 
-  nom : string,
+  nom : string and string,
   age :number
 
 }
