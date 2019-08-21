@@ -82,5 +82,5 @@ interface meth{
 //flechée
 
 var tast = (n: number, y: number)=>{
-  return  3 * n;
+  return  3 = n;
 }
