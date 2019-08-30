@@ -17,7 +17,7 @@ class SortieMaintenance extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateSortie','prix','centre','entreMaintenance_id','prixTotal',
+         'debutSerie','finSerie','dateSortie','prix','centre','entreMaintenance_id','prixTotal','paysAt'
     ];
 
     /**

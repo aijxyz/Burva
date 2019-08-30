@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use PragmaRX\Countries\Package\Countries;
+use PragmaRX\Countries\Package\Services\Config;
+
 
 
 
@@ -71,17 +74,35 @@ class UserController extends Controller
       
     
         if(Auth::user()->paysAt == 'Internationnal')
-        {
+        {      
+
+                /*  $countries = new Countries(new Config([
+                    'hydrate' => [
+                    'elements' => [               
+                    'flag' => true,
+                    'timezones' => true,
+                            ],
+                        ],
+                    ]));*/
+
               $users = User::all(); 
-            return view('vueUser',compact('users'));
+              $countries = new Countries();
+                     $paysget = $countries->all();
+            //$paysget = Countries::all(); 
+            //return  $paysget;
+            return view('vueUser',compact('users','paysget'));
         }
 
         else{
+             $countries = new Countries();
+             $paysget = $countries->all();
+         // $paysget = Countries::all();  
            $users= DB::table('users')
                          ->where('paysAt',Auth::user()->paysAt )
-                         ->get();;
+                         ->get();                
+            
 
-           return view('vueUser',compact('users'));
+               return view('vueUser',compact('users','paysget'));
 
         }
       

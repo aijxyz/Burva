@@ -9,7 +9,7 @@
   <option value="0">ID </option>
   <option value="1">Debut serie</option>
   <option value="2">Fin serie</option>
-  <option value="3">Date sortie</option>
+  <option value="3">Date sortie</option>  
    <option value="4">Centre</option> 
   <option value="5">Prix Unitaire</option> 
   <option value="6">Reference</option>
@@ -197,7 +197,7 @@
                   <label for="id_entresecurit" class="col-md-4 col-form-label text-md-right">{{ __('Date entrée') }}</label>
                     <div class="col-md-6 "> 
 
-                    <select id="id_entresecurit" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreSecuripack_id"  required autocomplete="id_entresecurit" autofocus>                     
+                    <select id="id_entresecurit"  type="text" class="form-control" name="entreSecuripack_id"  required autocomplete="id_entresecurit" autofocus>                     
                     <option> </option>  
                      @foreach($fourn as $fourns)
 
@@ -226,7 +226,7 @@
                 @enderror
               </div>
              </div>                 
-          
+           <input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >
             </div> 
 
         <div class="modal-footer">                 
@@ -334,7 +334,7 @@
                   <label for="id_entresecurit" class="col-md-4 col-form-label text-md-right">{{ __('Date entrée') }}</label>
                     <div class="col-md-6 "> 
 
-                    <select id="id_entresecurit" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control is-invalid @error('id_entresecurit')  @enderror" name="entreSecuripack_id"  required autocomplete="id_entresecurit" autofocus>                     
+                    <select id="id_entresecurit"  type="text" class="form-control name="entreSecuripack_id"  required autocomplete="id_entresecurit" autofocus>                     
                     <option> </option>  
                      @foreach($fourn as $fourns)
 
@@ -363,7 +363,7 @@
                 @enderror
               </div>
              </div>                  
-            <input id="cat_id" type="hidden" name="sortieBordereau_id" value=" " >  
+            <input id="cat_id" type="hidden" name="sortieSecuripack_id" value=" " >  
               </div> 
         
         <div class="modal-footer">                 

@@ -7,7 +7,7 @@
 
  <select style="width: 200px;" name="toggle_column"  id="toggle_column">
    <option value="0">Id </option>
-   <option value="1">Debut serie</option>
+   <option value="1">Debut serie</option> 
    <option value="2">Fin serie</option>
    <option value="3">Date entrée</option>
    <option value="4">Prix unitaire</option> 

@@ -19,7 +19,7 @@ class SortieApprovis extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateSortie','prix','centre','entreApprovis_id','prixTotal',
+         'debutSerie','finSerie','dateSortie','prix','centre','entreApprovis_id','prixTotal','paysAt'
     ];
 
     /**

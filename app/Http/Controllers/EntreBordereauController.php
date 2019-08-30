@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
-use App\EntreBordereau;
+use App\EntreBordereau; 
 use App\Fournisseur;
 use DB;
 use Auth;
@@ -104,7 +104,7 @@ class EntreBordereauController extends Controller
 
         else{
 
-          $entreBordereaus = EntreBordereau::all()->where('paysAt',Auth::user()->paysAt );                        
+          $entreBordereaus = EntreBordereau::all()->where('paysAt',Auth::user()->paysAt);                        
                              
 
             $som = DB::table('entre_bordereaus')

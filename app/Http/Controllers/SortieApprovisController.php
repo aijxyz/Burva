@@ -9,15 +9,17 @@ use Illuminate\Http\Request;
 use App\EntreApprovis;
 use App\SortieApprovis;
 use DB;
+use Auth;
+
 class SortieApprovisController extends Controller
 {
-    
 
 
-     public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+   public function __construct()
+   {
+    $this->middleware('auth');
+}
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +37,7 @@ class SortieApprovisController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-        
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +45,7 @@ class SortieApprovisController extends Controller
      * @return \Illuminate\Http\Response
       */
 
- public function store(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'debutSerie' => ['required', 'Integer'],
@@ -52,25 +54,25 @@ class SortieApprovisController extends Controller
             'centre'=> ['required', 'string', 'max:255'], 
             'prix'=> ['required', 'Integer'],
             'prixTotal' =>['required', 'Integer'],           
-         ]);
+        ]);
 
-  if ($validator->fails()) {
+        if ($validator->fails()) {
             //return back()->withErrors($validator)->withInput();
-               Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
-                return redirect()->route('sortieApprovisList');
-          
-        }
-        else{
+         Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
+         return redirect()->route('sortieApprovisList');
 
-              SortieApprovis::create($request->all());
-              Alert::success('Ajouter', 'Avec success');     
-             return redirect()->route('sortieApprovisList');
-        }
-      
+     }
+     else{
+
+      SortieApprovis::create($request->all());
+      Alert::success('Ajouter', 'Avec success');     
+      return redirect()->route('sortieApprovisList');
+  }
+
 
 }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -79,15 +81,22 @@ class SortieApprovisController extends Controller
      */
     public function show()
     {
-      
-      
-      $sortieApprovis = SortieApprovis::all(); 
+
+      if (Auth::user()->paysAt == 'Internationnal') {
+          $sortieApprovis = SortieApprovis::all(); 
      //$entreBord = Fournisseur::find(1)->fournisseur;
-      $entreAppro= EntreApprovis::all();  
-      $som = DB::table('sortie_approvis')->get()->sum('prixTotal');
-         return view('vueSortieApprovis' ,compact('sortieApprovis','entreAppro','som'));      
-        
-    }
+          $entreAppro= EntreApprovis::all();  
+          $som = DB::table('sortie_approvis')->get()->sum('prixTotal');
+          return view('vueSortieApprovis' ,compact('sortieApprovis','entreAppro','som'));  
+      }else {
+        $sortieApprovis = SortieApprovis::all()->where('paysAt',Auth::user()->paysAt ); 
+     //$entreBord = Fournisseur::find(1)->fournisseur;
+        $entreAppro= EntreApprovis::all()->where('paysAt',Auth::user()->paysAt );  
+        $som = DB::table('sortie_approvis')->where('paysAt',Auth::user()->paysAt )->get()->sum('prixTotal');
+        return view('vueSortieApprovis' ,compact('sortieApprovis','entreAppro','som'));  
+    }    
+
+}
 
 
      /**
@@ -96,38 +105,38 @@ class SortieApprovisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {   
-            $validator = Validator::make($request->all(), [
+     public function update(Request $request)
+     {   
+        $validator = Validator::make($request->all(), [
             'debutSerie' => ['required', 'Integer'],
             'finSerie' => ['required', 'Integer'],
             'dateSortie' => ['required', 'date'],
             'centre'=> ['required', 'string', 'max:255'], 
             'prix'=> ['required', 'Integer'],
             'prixTotal' =>['required', 'Integer'],           
-         ]);
+        ]);
 
 
         if ($validator->fails()) {
             //return back()->withErrors($validator)->withInput();
-             Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
+           Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
 
-             return redirect()->route('sortieApprovisList');
-          
-        }
+           return redirect()->route('sortieApprovisList');
 
-         else{
+       }
 
-             $sortieApprovis = SortieApprovis::findOrfail($request->sortieApprovis_id)->update($request->all());
-              Alert::success('Modifier', 'Avec success');     
-              return redirect()->route('sortieApprovisList');
+       else{
 
-        }
-  
-      
-        
-        
-    }
+           $sortieApprovis = SortieApprovis::findOrfail($request->sortieApprovis_id)->update($request->all());
+           Alert::success('Modifier', 'Avec success');     
+           return redirect()->route('sortieApprovisList');
+
+       }
+
+
+
+
+   }
 
     /**
      * Remove the specified resource from storage.
@@ -138,10 +147,9 @@ class SortieApprovisController extends Controller
     public function destroy(Request $request)
     {
         // $fournisseurs=DB::table('fournisseurs')->where('id',$request->fournisseurs_id)->delete();
-       $sortieApprovis=SortieApprovis::findOrfail($request->sortieApprovis_id)->delete();  
-       Alert::success('Supprimer', 'Avec success');
-        return redirect()->route('sortieApprovisList'); 
+     $sortieApprovis=SortieApprovis::findOrfail($request->sortieApprovis_id)->delete();  
+     Alert::success('Supprimer', 'Avec success');
+     return redirect()->route('sortieApprovisList'); 
 
-    }
+ }
 }
- 

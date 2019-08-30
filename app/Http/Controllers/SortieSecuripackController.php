@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\EntreSecuripack;
 use App\SortieSecuripack;
 use DB;
+use Auth;
 
 class SortieSecuripackController extends Controller
 {
@@ -71,20 +72,42 @@ class SortieSecuripackController extends Controller
     public function show()
     {
       
+      if(Auth::user()->paysAt == 'Internationnal')
+        {
       
-      $sortieSecuripacks = SortieSecuripack::all(); 
-      $som = DB::table('sortie_securipacks')->get()->sum('prixTotal');
-     //$entreBord = Fournisseur::find(1)->fournisseur;
-      $fourn= EntreSecuripack::all();    
-  
+        $sortieSecuripacks = SortieSecuripack::all(); 
+         $som = DB::table('sortie_securipacks')->get()->sum('prixTotal');
+       //$entreBord = Fournisseur::find(1)->fournisseur;
+        $fourn= EntreSecuripack::all();    
        
 
     //  return view('homeAdmin',compact('users'));
          return view('vueSortieSecuripack' ,compact('sortieSecuripacks','fourn','som'));
+        }
+
+
+        else{
+
+          $sortieSecuripacks = SortieSecuripack::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('sortie_securipacks')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+            $fourn= DB::table('entre_securipacks')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
+          return view('vueSortieSecuripack' ,compact('sortieSecuripacks','fourn','som'));
+
+        }
 
       
         
     }
+
+
 
 
         //
@@ -118,7 +141,7 @@ class SortieSecuripackController extends Controller
 
          else{
 
-             $sortieSecuripacks = SortieSecuripack::findOrfail($request->entreSecuripack_id)->update($request->all());
+             $sortieSecuripacks = SortieSecuripack::findOrfail($request->sortieSecuripack_id)->update($request->all());
               Alert::success('Modifier', 'Avec success');     
               return redirect()->route('sortieSecuripackList');
 

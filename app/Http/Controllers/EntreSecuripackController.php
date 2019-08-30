@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\EntreSecuripack;
 use App\Fournisseur;
 use DB;
+use Auth;
 
 
 
@@ -18,7 +19,7 @@ class EntreSecuripackController extends Controller
 
 
 
-      public function __construct()
+      public function __construct() 
     {
         $this->middleware('auth');
     }
@@ -74,7 +75,8 @@ class EntreSecuripackController extends Controller
     public function show()
     {
       
-      
+      if(Auth::user()->paysAt == 'Internationnal')
+        {
       $entreSecuripacks = EntreSecuripack::all(); 
       $som = DB::table('entre_securipacks')->get()->sum('prixTotal');
      //$entreBord = Fournisseur::find(1)->fournisseur;
@@ -84,12 +86,30 @@ class EntreSecuripackController extends Controller
 
     //  return view('homeAdmin',compact('users'));
          return view('vueEntreSecuripack' ,compact('entreSecuripacks','fourn','som'));
+        }
+
+        else{
+
+          $entreSecuripacks = EntreSecuripack::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('entre_securipacks')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+             $fourn= DB::table('fournisseurs')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
+          return view('vueEntreSecuripack' ,compact('entreSecuripacks','fourn','som'));
+
+        } 
 
       
         
     }
-
-
+   
+               
         //
     
 
