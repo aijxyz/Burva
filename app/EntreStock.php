@@ -16,7 +16,7 @@ class EntreStock extends Model
      * @var array
      */
     protected $fillable = [
-         'id','dateAppro','QEntrant','prixAchat','observ','numFacture','produit_id',
+         'id','dateAppro','QEntrant','prixAchat','observ','numFacture','produit_id','paysAt'
     ];
 
 

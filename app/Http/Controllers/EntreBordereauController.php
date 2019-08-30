@@ -104,7 +104,7 @@ class EntreBordereauController extends Controller
 
         else{
 
-          $entreBordereaus = EntreBordereau::all()->where('paysAt',Auth::user()->paysAt );                        
+          $entreBordereaus = EntreBordereau::all()->where('paysAt',Auth::user()->paysAt);                        
                              
 
             $som = DB::table('entre_bordereaus')

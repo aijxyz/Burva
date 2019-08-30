@@ -9,16 +9,17 @@ use Illuminate\Http\Request;
 use App\EntreMaintenance;
 use App\SortieMaintenance;
 use DB;
+use Auth;
 
 class SortieMaintenanceController extends Controller
 {
     //
 
- 
-     public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+   public function __construct()
+   {
+    $this->middleware('auth');
+}
     /**
      * Display a listing of the resource.
      *
@@ -36,16 +37,16 @@ class SortieMaintenanceController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-        
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-  public function store(Request $request)
+    public function store(Request $request)
     {
-    
+
         $validator = Validator::make($request->all(), [
             'debutSerie' => ['required', 'Integer'],
             'finSerie' => ['required', 'Integer'],
@@ -53,26 +54,26 @@ class SortieMaintenanceController extends Controller
             'centre'=> ['required', 'string', 'max:255'], 
             'prix'=> ['required', 'Integer'],
             'prixTotal' =>['required', 'Integer'],           
-         ]);
+        ]);
 
-            if ($validator->fails()) {
+        if ($validator->fails()) {
 
-        Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
-          return redirect()->route('SortieMaintenanceList');       
+            Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
+            return redirect()->route('SortieMaintenanceList');       
 
 
-            }
-              else{
+        }
+        else{
 
           SortieMaintenance::create($request->all());
         //s$this->guard()->login($user);
-         Alert::success('Ajouter', 'Avec success');   
-        return redirect()->route('sortieMaintenanceList');
-    }
-    
-    }
-       
-    
+          Alert::success('Ajouter', 'Avec success');   
+          return redirect()->route('sortieMaintenanceList');
+      }
+
+  }
+
+
     /**
      * Display the specified resource.
      *
@@ -81,17 +82,25 @@ class SortieMaintenanceController extends Controller
      */
     public function show()
     {
-      
-      
-      $sortieMaintenances = SortieMaintenance::all(); 
-     //$entreBord = Fournisseur::find(1)->fournisseur;
-         $entreMaint= EntreMaintenance::all();  
-         $som = DB::table('sortie_maintenances')->get()->sum('prixTotal');
-         return view('vueSortieMaintenance' ,compact('sortieMaintenances','entreMaint','som'));
 
-      
-        
+
+      if (Auth::user()->paysAt == 'Internationnal') {
+          $sortieMaintenances = SortieMaintenance::all(); 
+     //$entreBord = Fournisseur::find(1)->fournisseur;
+          $entreMaint= EntreMaintenance::all();  
+          $som = DB::table('sortie_maintenances')->get()->sum('prixTotal');
+          return view('vueSortieMaintenance' ,compact('sortieMaintenances','entreMaint','som'));
+      }else{
+        $sortieMaintenances = SortieMaintenance::all()->where('paysAt',Auth::user()->paysAt); 
+     //$entreBord = Fournisseur::find(1)->fournisseur;
+        $entreMaint= EntreMaintenance::all()->where('paysAt',Auth::user()->paysAt );  
+        $som = DB::table('sortie_maintenances')->where('paysAt',Auth::user()->paysAt )->get()->sum('prixTotal');
+        return view('vueSortieMaintenance' ,compact('sortieMaintenances','entreMaint','som'));
     }
+
+
+
+}
 
 
      /**
@@ -100,38 +109,38 @@ class SortieMaintenanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {   
-            $validator = Validator::make($request->all(), [
+     public function update(Request $request)
+     {   
+        $validator = Validator::make($request->all(), [
             'debutSerie' => ['required', 'Integer'],
             'finSerie' => ['required', 'Integer'],
             'dateSortie' => ['required', 'date'],
             'centre'=> ['required', 'string', 'max:255'], 
             'prix'=> ['required', 'Integer'],
             'prixTotal' =>['required', 'Integer'],           
-         ]);
+        ]);
 
 
         if ($validator->fails()) {
             //return back()->withErrors($validator)->withInput();
-             Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
+           Alert::toast('Erreur!  Veuillez verifier le champ de saisie prix total', 'error');
 
-             return redirect()->route('sortieMaintenanceList');
-          
-        }
+           return redirect()->route('sortieMaintenanceList');
 
-         else{
+       }
 
-              SortieMaintenance::findOrfail($request->sortieMaintenance_id)->update($request->all());
-              Alert::success('Modifier', 'Avec success');     
-              return redirect()->route('sortieMaintenanceList');
+       else{
 
-        }
-  
+          SortieMaintenance::findOrfail($request->sortieMaintenance_id)->update($request->all());
+          Alert::success('Modifier', 'Avec success');     
+          return redirect()->route('sortieMaintenanceList');
+
+      }
+
       
-        
-        
-    }
+
+
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -142,13 +151,12 @@ class SortieMaintenanceController extends Controller
     public function destroy(Request $request)
     {
         // $fournisseurs=DB::table('fournisseurs')->where('id',$request->fournisseurs_id)->delete();
-       SortieMaintenance::findOrfail($request->sortieMaintenance_id)->delete();  
-       Alert::success('Supprimer', 'Avec success');
-        return redirect()->route('sortieMaintenanceList'); 
+     SortieMaintenance::findOrfail($request->sortieMaintenance_id)->delete();  
+     Alert::success('Supprimer', 'Avec success');
+     return redirect()->route('sortieMaintenanceList'); 
 
-    }
+ }
 
 
 
 }
- 

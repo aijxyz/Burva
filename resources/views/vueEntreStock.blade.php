@@ -207,7 +207,7 @@
       </div>
   </div> 
 
-
+<input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >
 </div> 
 
 <div class="modal-footer">                 

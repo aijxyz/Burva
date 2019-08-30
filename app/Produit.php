@@ -24,7 +24,8 @@ class Produit extends Model
         'ves',
         'reference',
         'prixHt',
-        'fournisseur_id'    
+        'fournisseur_id' ,
+        'paysAt'   
     ];
 
     /**
