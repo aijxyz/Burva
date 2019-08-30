@@ -27,6 +27,7 @@
     <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('multiple-select/dist/multiple-select.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap-select\dist\css\bootstrap-select.css') }}" rel="stylesheet">
+    
     <!--<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">-->
 
   <!-- Ionicons -->

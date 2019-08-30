@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('name_verified_at')->nullable();
             $table->string('password');
             $table->string('profil'); 
-            $table->string('pays');      
+            $table->string('paysAt');      
             $table->rememberToken();
             $table->timestamps();
         });

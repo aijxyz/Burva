@@ -7,7 +7,7 @@
 
  <select style="width: 200px;" name="toggle_column"  id="toggle_column">
    <option value="0">Id </option>
-   <option value="1">Debut serie</option>
+   <option value="1">Debut serie</option> 
    <option value="2">Fin serie</option>
    <option value="3">Date entrée</option>
    <option value="4">Prix unitaire</option> 
@@ -168,7 +168,7 @@
     <label for="id_four" class="col-md-4 col-form-label text-md-right">{{ __('Founisseur') }}</label>
     <div class="col-md-6"> 
 
-      <select id="id_four" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();' type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
+      <select id="id_four" type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
         <option> </option>  
         @foreach($fourn as $fourns)
 

@@ -19,7 +19,7 @@ class EntreSecuripack extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','reference','fournisseur_id',
+         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','reference','fournisseur_id','paysAt'
     ];
 
     /**

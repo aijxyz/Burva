@@ -8,7 +8,7 @@ use App\Fournisseur;
 use App\SortieBonComd;
 class EntreBonComd extends Model
 {
-    //use Notifiable;
+    //use Notifiable; 
    
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,7 @@ class EntreBonComd extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','fournisseur_id',
+         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','fournisseur_id','paysAt'
     ];
 
     /**

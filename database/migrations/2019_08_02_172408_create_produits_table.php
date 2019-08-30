@@ -21,7 +21,8 @@ class CreateProduitsTable extends Migration
             $table->unsignedBigInteger('stockAlert');
             $table->string('ves');
             $table->unsignedBigInteger('reference');
-            $table->unsignedBigInteger('prixHt');   
+            $table->unsignedBigInteger('prixHt'); 
+            $table->string('paysAt');  
             $table->unsignedBigInteger('fournisseur_id');
             $table->foreign('fournisseur_id')->references('id')->on('fournisseurs')
                   ->onDelete('restrict')

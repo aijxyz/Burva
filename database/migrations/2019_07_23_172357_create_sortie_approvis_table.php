@@ -20,7 +20,8 @@ class CreateSortieApprovisTable extends Migration
             $table->date('dateSortie');
             $table->string('centre');
             $table->unsignedBigInteger('prix'); 
-            $table->unsignedBigInteger('prixTotal');                        
+            $table->unsignedBigInteger('prixTotal');
+            $table->string('paysAt');                        
             $table->unsignedBigInteger('entreApprovis_id');
             $table->foreign('entreApprovis_id')->references('id')->on('entre_approvis')
                    ->onDelete('restrict')

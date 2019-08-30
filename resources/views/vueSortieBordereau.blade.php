@@ -178,7 +178,7 @@
                   <label for="id_entrebord" class="col-md-4 col-form-label text-md-right">{{ __('Date entrée') }}</label>
                     <div class="col-md-6 "> 
 
-                    <select id="id_entrebord" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreBordereau_id"  required autocomplete="id_entrebord" autofocus>                     
+                  <select id="id_entrebord" type="text" class="form-control" name="entreBordereau_id"  required autocomplete="id_entrebord" autofocus>                     
                     <option> </option>  
                      @foreach($entreBord as $entreBords)
 
@@ -186,7 +186,7 @@
 
                      @endforeach                                          
                              
-                    </select>                      
+                  </select>                      
                      @error('id_entrebord')
                       <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>

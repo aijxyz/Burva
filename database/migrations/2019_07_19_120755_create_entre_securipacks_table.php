@@ -20,7 +20,8 @@ class CreateEntreSecuripacksTable extends Migration
             $table->date('dateEntre');
             $table->unsignedBigInteger('prixUnitaire');
             $table->unsignedBigInteger('prixTotal');  
-            $table->unsignedBigInteger('reference');                       
+            $table->unsignedBigInteger('reference');
+            $table->string('paysAt');                        
             $table->unsignedBigInteger('fournisseur_id');
             $table->foreign('fournisseur_id')->references('id')->on('fournisseurs')
                   ->onDelete('restrict')

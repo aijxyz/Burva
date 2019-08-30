@@ -13,7 +13,7 @@
    <option value="4">Prix unitaire</option> 
    <option value="5">Fournisseur</option> 
    <option value="6">Prix Total</option> 
-   <option value="7">Modif/Supp</option>  
+   <option value="7">Modif/Supp</option>   
  </select>
 
  
@@ -168,7 +168,7 @@
     <label for="id_four" class="col-md-4 col-form-label text-md-right">{{ __('Founisseur') }}</label>
     <div class="col-md-6"> 
 
-      <select id="id_four" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();' type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
+      <select id="id_four"  type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
         <option> </option>  
         @foreach($fourn as $fourns)
 
@@ -186,7 +186,7 @@
   </div>  
   <div class="form-group row">          
     <label for="prixTotal" class="col-md-3 col-form-label text-md-right">{{ __('Prix Total') }}</label>
-    <div class="col-md-9"> 
+   <div class="col-md-9"> 
      <input type="text" class="form-control @error('prixTotal') is-invalid @enderror" id="prixTotal"  name="prixTotal"       
      value="{{ old('prixTotal') }}" required autocomplete="prixTotal" autofocus>
      @error('prixTotal')
@@ -194,10 +194,9 @@
       <strong>{{ $message }}</strong>
     </span>
     @enderror
-  </div>
+   </div>
 </div>  
-
-
+<input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >
 </div> 
 
 <div class="modal-footer">                 
@@ -283,7 +282,7 @@
       <label for="id_four" class="col-md-4 col-form-label text-md-right">{{ __('Fournisseur') }}</label>
       <div class="col-md-6"> 
 
-        <select id="id_four" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
+        <select id="id_four"  type="text" class="form-control" name="fournisseur_id"  required autocomplete="id_four" autofocus>                     
 
          @foreach($fourn as $fourns)
 

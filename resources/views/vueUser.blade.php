@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @if(Auth::user()->profil =='Administration')
 @section('content')
+ 
 <div class="container">
 
 <select style="width: 200px;" name="toggle_column"  id="toggle_column">
@@ -42,7 +43,7 @@
                     <th class="text-center">Login</th>
                     <th class="text-center">Profile</th>
                     <th class="text-center">Pays</th>
-                    <th class="text-center">Supprimer</th>                 
+                    <th class="text-center">Modif/Supp</th>                 
                   </tr>
                 </thead>
                 <tbody>
@@ -138,24 +139,19 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                    @auth
+                    @if(Auth::user()->paysAt == 'Internationnal' )
                         <div class="form-group row">
                             <label for="paysAt" class="col-md-4 col-form-label text-md-right">{{ __('Pays') }}</label>
 
                             <div class="col-md-6">
-                             <select id="paysAt" type="text" class="form-control" name="paysAt" value="{{ old('paysAt') }}" required autocomplete="paysAt" > 
-                              <option> </option> 
-                              <option>Benin</option>                            
-                              <option>Burkina</option>
-                              <option>Cote d'ivoire</option>
-                              <option>Ghana</option>
-                              <option>Mali</option>
-                              <option>Niger</option>
-                              <option>Nigeria</option>
-                              <option>Senegal</option>
-                              <option>Internationnal</option>                              
-                              <option>Togo</option>                         
-                              <option>Tchad</option>                                                  
+                             <select id="paysAt" type="text" class="form-control" name="paysAt" value="{{ old('paysAt') }}" required autocomplete="paysAt">  
+                             <option> </option>                            
+                            @foreach($paysget as $paysgets)
+
+                             <option> {!!$paysgets->flag['flag-icon'] !!} {!! $paysgets->name->common !!} </option> 
+
+                           @endforeach
                              </select>                         
                                 @error('paysAt')
                                     <span class="invalid-feedback" role="alert">
@@ -163,7 +159,9 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> 
+                    @endif
+                  @endauth
                          
 
                         <div class="form-group row">
@@ -188,8 +186,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>                          
-                         </div>
+                            </div> 
+                     @auth
+                      @if(Auth::user()->paysAt != 'Internationnal' )
+                             <input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >  
+                      @endif
+                    @endauth
+                                                
+                        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary"> {{ __('Valider') }}</button>
@@ -237,18 +241,11 @@
 
                             <div class="col-md-7">
                              <select id="paysAt" type="text" class="form-control" name="paysAt" value="{{ old('paysAt') }}" required autocomplete="paysAt">                              
-                             <option> </option> 
-                              <option>Benin</option>                            
-                              <option>Burkina</option>
-                              <option>Cote d'ivoire</option>
-                              <option>Ghana</option>
-                              <option>Mali</option>
-                              <option>Niger</option>
-                              <option>Nigeria</option>
-                              <option>Senegal</option>
-                              <option>Internationnal</option>                              
-                              <option>Togo</option>                         
-                              <option>Tchad</option>
+                            @foreach($paysget as $paysgets)
+
+                             <option> {!!$paysgets->flag['flag-icon'] !!} {!! $paysgets->name->common !!} </option> 
+
+                           @endforeach
                              </select>                         
                                 @error('paysAt')
                                     <span class="invalid-feedback" role="alert">

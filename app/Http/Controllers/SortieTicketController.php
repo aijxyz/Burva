@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\EntreTicket;
 use App\SortieTicket;
 use DB;
+use Auth;
 
 class SortieTicketController extends Controller
 {
@@ -22,7 +23,7 @@ class SortieTicketController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function index()
     {
@@ -82,16 +83,36 @@ class SortieTicketController extends Controller
     public function show()
     {
       
-      
+      if(Auth::user()->paysAt == 'Internationnal')
+        {
       $sortieTickets = SortieTicket::all(); 
      //$entreTick = Fournisseur::find(1)->fournisseur;
       $entreTick= EntreTicket::all();  
       $som = DB::table('sortie_tickets')->get()->sum('prixTotal');
          return view('vueSortieTicket' ,compact('sortieTickets','entreTick','som'));
+      }
+        else{
+
+          $sortieTickets= SortieTicket::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('sortie_tickets')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+            $entreTick= DB::table('entre_tickets')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
+          return view('vueSortieTicket' ,compact('sortieTickets','entreTick','som'));
+
+        }
+
 
       
         
     }
+
 
 
      /**

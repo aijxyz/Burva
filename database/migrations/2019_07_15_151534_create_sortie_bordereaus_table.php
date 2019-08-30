@@ -20,9 +20,10 @@ class CreateSortieBordereausTable extends Migration
             $table->date('dateSortie');
             $table->string('centre');
             $table->unsignedBigInteger('prix'); 
-            $table->unsignedBigInteger('prixTotal');                        
-            $table->unsignedBigInteger('entreBordereau_id');
-            $table->foreign('entreBordereau_id')->references('id')->on('entre_bordereaus')
+            $table->unsignedBigInteger('prixTotal'); 
+            $table->string('paysAt');                         
+            $table->unsignedBigInteger('entreBordereau_id');          
+            $table->foreign('entreBordereau_id')->references('id')->on('entre_bordereaus')            
                    ->onDelete('restrict')
                    ->onUpdate('restrict');
 

@@ -9,7 +9,7 @@ use App\EntreBordereau;
 class SortieBordereau extends Model
 {
     //
-
+ 
 
    
     use Notifiable;

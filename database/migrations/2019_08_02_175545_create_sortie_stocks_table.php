@@ -23,6 +23,7 @@ class CreateSortieStocksTable extends Migration
             $table->date('dateSaisie');               
             $table->string('centre'); 
             $table->string('observ');
+            $table->string('paysAt');
             $table->unsignedBigInteger('entreStock_id');        
             $table->foreign('entreStock_id')->references('id')->on('entre_stocks')
                   ->onDelete('restrict')

@@ -10,7 +10,7 @@
   <option value="3">Date sortie</option>   
   <option value="4">Centre</option> 
   <option value="5">Prix</option>
-  <option value="6">Date d'entrée</option> 
+  <option value="6">Date d'entrée</option>   
   <option value="7">Prix Total</option>
   <option value="8">Modif/Supp</option>  
 </select>
@@ -178,7 +178,7 @@
                   <label for="id_entrebord" class="col-md-4 col-form-label text-md-right">{{ __('Date entrée') }}</label>
                     <div class="col-md-6 "> 
 
-                    <select id="id_entrebon" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreBonComd_id"  required autocomplete="id_entrebon" autofocus>                     
+                    <select id="id_entrebon" type="text" class="form-control" name="entreBonComd_id"  required autocomplete="id_entrebon" autofocus>                     
                     <option> </option>  
                      @foreach($entreBon as $entreBons)
 
@@ -207,8 +207,8 @@
                 @enderror
               </div>
              </div>               
-
-              </div> 
+            <input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >
+            </div> 
 
         <div class="modal-footer">                 
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -304,7 +304,7 @@
                   <label for="id_entrebon" class="col-md-4 col-form-label text-md-right">{{ __('Date Entrée') }}</label>
                     <div class="col-md-6"> 
                    
-                    <select id="id_entrebon" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreBonComd_id"  required autocomplete="id_entrebon" autofocus>                     
+                    <select id="id_entrebon" type="text" class="form-control" name="entreBonComd_id"  required autocomplete="id_entrebon" autofocus>                     
                      
                      @foreach($entreBon as $entreBons)
 

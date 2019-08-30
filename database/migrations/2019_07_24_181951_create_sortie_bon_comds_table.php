@@ -20,7 +20,8 @@ class CreateSortieBonComdsTable extends Migration
             $table->date('dateSortie');
             $table->string('centre');
             $table->unsignedBigInteger('prix'); 
-            $table->unsignedBigInteger('prixTotal');                        
+            $table->unsignedBigInteger('prixTotal'); 
+            $table->string('paysAt');                       
             $table->unsignedBigInteger('entreBonComd_id');
             $table->foreign('entreBonComd_id')->references('id')->on('entre_bon_comds')
                  ->onDelete('restrict')

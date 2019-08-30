@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use App\EntreTicket;
 use App\Fournisseur;
-use DB;
+use DB; 
+use Auth;
 
 class EntreTicketController extends Controller
 {
@@ -89,7 +90,8 @@ class EntreTicketController extends Controller
     public function show()
     {
       
-      
+      if(Auth::user()->paysAt == 'Internationnal')
+        {         
       $entreTickets = EntreTicket::all(); 
       $som = DB::table('entre_tickets')->get()->sum('prixTotal');
      //$entreBord = Fournisseur::find(1)->fournisseur;
@@ -97,9 +99,33 @@ class EntreTicketController extends Controller
     
     //  return view('homeAdmin',compact('users'));
       return view('vueEntreTicket' ,compact('entreTickets','fourn','som'));
-      
+      }
+
+    else{
+
+           $entreTickets = EntreTicket::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('entre_tickets')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+             $fourn= DB::table('fournisseurs')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
+          return view('vueEntreTicket' ,compact('entreTickets','fourn','som'));
+
+        } 
         
     }
+
+
+    
+        
+
+              
+
 
    
     /**

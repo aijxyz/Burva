@@ -20,7 +20,8 @@ class CreateSortieMaintenancesTable extends Migration
             $table->date('dateSortie');
             $table->string('centre');
             $table->unsignedBigInteger('prix'); 
-            $table->unsignedBigInteger('prixTotal');                        
+            $table->unsignedBigInteger('prixTotal'); 
+            $table->string('paysAt');                       
             $table->unsignedBigInteger('entreMaintenance_id');
             $table->foreign('entreMaintenance_id')->references('id')->on('entre_maintenances')
                   ->onDelete('restrict')

@@ -20,7 +20,8 @@ class CreateSortieTicketsTable extends Migration
             $table->date('dateSortie');
             $table->string('centre');
             $table->unsignedBigInteger('prix'); 
-            $table->unsignedBigInteger('prixTotal');                        
+            $table->unsignedBigInteger('prixTotal');
+            $table->string('paysAt');                        
             $table->unsignedBigInteger('entreTicket_id');
             $table->foreign('entreTicket_id')->references('id')->on('entre_tickets')
                    ->onDelete('restrict')

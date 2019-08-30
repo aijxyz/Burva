@@ -19,7 +19,8 @@ class CreateEntreStocksTable extends Migration
             $table->unsignedBigInteger('QEntrant');             
             $table->unsignedBigInteger('prixAchat');   
             $table->string('observ');    
-            $table->string('numFacture');                  
+            $table->string('numFacture');  
+            $table->string('paysAt');                
             $table->unsignedBigInteger('produit_id');           
             $table->foreign('produit_id')->references('id')->on('produits')
                   ->onDelete('restrict')

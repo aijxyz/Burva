@@ -11,13 +11,13 @@ class SortieBonComd extends Model
     // 
     use Notifiable; 
     
-    /**
+    /** 
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateSortie','prix','centre','entreBonComd_id','prixTotal',
+         'debutSerie','finSerie','dateSortie','prix','centre','entreBonComd_id','prixTotal','paysAt'
     ];
 
     /**

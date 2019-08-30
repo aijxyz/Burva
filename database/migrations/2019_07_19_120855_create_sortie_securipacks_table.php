@@ -21,7 +21,8 @@ class CreateSortieSecuripacksTable extends Migration
             $table->string('centre');
             $table->unsignedBigInteger('prixUnitaire'); 
             $table->unsignedBigInteger('prixTotal'); 
-            $table->unsignedBigInteger('reference');                        
+            $table->unsignedBigInteger('reference');
+            $table->string('paysAt');                     
             $table->unsignedBigInteger('entreSecuripack_id');
             $table->foreign('entreSecuripack_id')->references('id')->on('entre_securipacks')
                    ->onDelete('restrict')

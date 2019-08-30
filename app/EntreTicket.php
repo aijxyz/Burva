@@ -18,7 +18,7 @@ class EntreTicket extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','fournisseur_id',
+         'debutSerie','finSerie','dateEntre','prixUnitaire','prixTotal','fournisseur_id','paysAt'
     ];
 
     /**

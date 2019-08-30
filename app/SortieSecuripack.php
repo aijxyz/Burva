@@ -18,7 +18,7 @@ class SortieSecuripack extends Model
      * @var array
      */
     protected $fillable = [
-         'debutSerie','finSerie','dateSortie','prixUnitaire','centre','reference','entreSecuripack_id','prixTotal',
+         'debutSerie','finSerie','dateSortie','prixUnitaire','centre','reference','entreSecuripack_id','prixTotal','paysAt'
     ];
 
     /**
@@ -27,7 +27,7 @@ class SortieSecuripack extends Model
      * @var array
      */
     protected $hidden = [
-         'remember_token',
+         'remember_token', 
     ];
 
     /**

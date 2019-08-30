@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 use App\EntreBonComd;
 use App\Fournisseur;
 use DB;
+use Auth;
 
 class EntreBonComdController extends Controller
 {
     //
        public function __construct()
-    {
+    { 
         $this->middleware('auth');
     }
     /**
@@ -89,15 +90,34 @@ class EntreBonComdController extends Controller
     {
       
       
+   if(Auth::user()->paysAt == 'Internationnal')
+        {
       $entreBonComds = EntreBonComd::all(); 
       $som = DB::table('entre_bon_comds')->get()->sum('prixTotal');
      //$entreBord = Fournisseur::find(1)->fournisseur;
       $fourn= Fournisseur::all();      
     
     //  return view('homeAdmin',compact('users'));
-      return view('vueEntreBonComd' ,compact('entreBonComds','fourn','som'));
-      
+      return view('vueEntreBonComd' ,compact('entreBonComds','fourn','som'));     
         
+      }
+
+   else{
+
+          $entreBonComds =EntreBonComd::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('entre_bon_comds')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+             $fourn= DB::table('fournisseurs')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
+          return view('vueEntreBonComd' ,compact('entreBonComds','fourn','som'));
+
+        } 
     }
 
    

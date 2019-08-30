@@ -11,7 +11,7 @@
   <option value="4">Centre</option> 
   <option value="5">Prix</option>
   <option value="6">Date d'entrée</option> 
-  <option value="7">Prix Total</option>
+  <option value="7">Prix Total</option>  
   <option value="8">Modif/Supp</option>  
 </select>
 
@@ -178,7 +178,7 @@
                   <label for="id_entreTick" class="col-md-4 col-form-label text-md-right">{{ __('Date entrée') }}</label>
                     <div class="col-md-6 "> 
 
-                    <select id="id_entreTick" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreTicket_id"  required autocomplete="id_entreTick" autofocus>                     
+                    <select id="id_entreTick" type="text" class="form-control" name="entreTicket_id"  required autocomplete="id_entreTick" autofocus>                     
                     <option> </option>  
                      @foreach($entreTick as $entreTicks)
 
@@ -207,8 +207,8 @@
                 @enderror
               </div>
              </div>               
-
-              </div> 
+              <input type="hidden" class="form-control @error('paysAt') is-invalid @enderror" id="paysAt"  name="paysAt" value="{{Auth::user()->paysAt}}" autofocus >
+            </div> 
 
         <div class="modal-footer">                 
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -304,7 +304,7 @@
                   <label for="id_entreTick" class="col-md-4 col-form-label text-md-right">{{ __('Date Entrée') }}</label>
                     <div class="col-md-6"> 
                    
-                    <select id="id_entreTick" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'  type="text" class="form-control" name="entreTicket_id"  required autocomplete="id_entreTick" autofocus>                     
+                    <select id="id_entreTick" type="text" class="form-control" name="entreTicket_id"  required autocomplete="id_entreTick" autofocus>                     
                      
                      @foreach($entreTick as $entreTicks)
 

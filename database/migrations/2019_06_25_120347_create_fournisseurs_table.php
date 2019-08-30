@@ -30,7 +30,7 @@ class CreateFournisseursTable extends Migration
             $table->string('domaineComp'); 
             $table->string('delaiLivr');
             $table->string('condiPaye'); 
-            $table->string('pays');  
+            $table->string('paysAt');  
             $table->timestamps();
         });
     }

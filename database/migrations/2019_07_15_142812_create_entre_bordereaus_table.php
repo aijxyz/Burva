@@ -18,13 +18,14 @@ class CreateEntreBordereausTable extends Migration
             $table->unsignedBigInteger('debutSerie');
             $table->unsignedBigInteger('finSerie');  
             $table->date('dateEntre');
-            $table->unsignedBigInteger('prixUnitaire');                      
-            $table->unsignedBigInteger('fournisseur_id');
+            $table->unsignedBigInteger('prixUnitaire');
+            $table->string('paysAt');                      
+            $table->unsignedBigInteger('fournisseur_id');           
             $table->foreign('fournisseur_id')->references('id')->on('fournisseurs')
                    ->onDelete('restrict')
                   ->onUpdate('restrict');
-           $table->unsignedBigInteger('prixTotal'); 
-            $table->timestamps();   
+           $table->unsignedBigInteger('prixTotal');            
+           $table->timestamps();   
         });
     }
 

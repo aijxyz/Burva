@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator; 
 use Illuminate\Support\Facades;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
-use App\EntreBordereau;
+use App\EntreBordereau; 
 use App\Fournisseur;
 use DB;
 use Auth;

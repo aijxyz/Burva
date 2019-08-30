@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\EntreBonComd;
 use App\SortieBonComd;
 use DB;
+use Auth;
 
 
 class SortieBonComdController extends Controller
@@ -82,16 +83,40 @@ class SortieBonComdController extends Controller
     public function show()
     {
       
-      
+      if(Auth::user()->paysAt == 'Internationnal')
+        {
       $sortieBonComds = SortieBonComd::all(); 
      //$entreBord = Fournisseur::find(1)->fournisseur;
       $entreBon= EntreBonComd::all();  
       $som = DB::table('sortie_bon_comds')->get()->sum('prixTotal');
+      return view('vueSortieBonComd' ,compact('sortieBonComds','entreBon','som'));
+          }
+
+    else{
+
+          $sortieBonComds = SortieBonComd::all()->where('paysAt',Auth::user()->paysAt );                        
+                             
+
+            $som = DB::table('sortie_bon_comds')
+                   ->where('paysAt',Auth::user()->paysAt )
+                   ->get()->sum('prixTotal');
+
+             $entreBon= DB::table('entre_bon_comds')
+                         ->where('paysAt',Auth::user()->paysAt )
+                         ->get();
+
           return view('vueSortieBonComd' ,compact('sortieBonComds','entreBon','som'));
+
+        }
 
       
         
     }
+
+
+
+    
+
 
 
      /**
