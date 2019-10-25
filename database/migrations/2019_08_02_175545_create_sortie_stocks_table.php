@@ -17,15 +17,14 @@ class CreateSortieStocksTable extends Migration
             $table->bigIncrements('id');
             $table->date('dateSortie');         
             $table->unsignedBigInteger('QSortant');     
-            $table->unsignedBigInteger('QEnStock'); 
-            $table->unsignedBigInteger('refProduit'); 
+            $table->unsignedBigInteger('QEnStock');             
             $table->string('motif');  
             $table->date('dateSaisie');               
             $table->string('centre'); 
             $table->string('observ');
             $table->string('paysAt');
-            $table->unsignedBigInteger('entreStock_id');        
-            $table->foreign('entreStock_id')->references('id')->on('entre_stocks')
+            $table->unsignedBigInteger('produit_id');        
+            $table->foreign('produit_id')->references('id')->on('produits')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');   
             $table->timestamps();
