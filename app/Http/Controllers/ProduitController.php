@@ -16,8 +16,8 @@ class ProduitController extends Controller
 {
     //
 
- public function __construct()
- {
+   public function __construct()
+   {
     $this->middleware('auth');
 }
     /**
@@ -59,12 +59,12 @@ class ProduitController extends Controller
 
       if ($validator->fails()) {
             //return back()->withErrors($validator)->withInput();
-         Alert::toast('Erreur! Veuillez Verifier vos siasies', 'error');
+       Alert::toast('Erreur! Veuillez Verifier vos siasies', 'error');
 
-         return redirect()->route('produitList');
+       return redirect()->route('produitList');
 
-     }
-     else{
+   }
+   else{
 
       Produit::create($request->all());
       Alert::success('Ajouter', 'Avec success');     
@@ -92,12 +92,12 @@ class ProduitController extends Controller
 
       if (Auth::user()->paysAt == 'Internationnal') {
         $produits = Produit::all();    
-        $som = DB::table('produits')->get()->sum('prixHt'); 
-        $fourn= Fournisseur::all();         
+          $som = DB::table('produits')->get()->sum('prixHt'); 
+          $fourn= Fournisseur::all();         
     //  return view('homeAdmin',compact('users'));
-        return view('vueProduit' ,compact('produits','fourn','som'));   
-    }
-    else{
+          return view('vueProduit' ,compact('produits','fourn','som'));   
+      }
+      else{
 
         $produits = Produit::all()->where('paysAt',Auth::user()->paysAt);    
         $som = DB::table('produits')->where('paysAt',Auth::user()->paysAt )->get()->sum('prixHt'); 
@@ -146,22 +146,22 @@ class ProduitController extends Controller
 
         if ($validator->fails()) {
             //return back()->withErrors($validator)->withInput();
-         Alert::toast('Erreur!  Veuillez Verifier vos siasies ', 'error');
+           Alert::toast('Erreur!  Veuillez Verifier vos siasies ', 'error');
 
+           return redirect()->route('produitList');
+
+       }
+
+       else{
+         Produit::findOrfail($request->produits_id)->update($request->all());
+         Alert::success('Modifier', 'Avec success');     
          return redirect()->route('produitList');
-
      }
 
-     else{
-       Produit::findOrfail($request->produits_id)->update($request->all());
-       Alert::success('Modifier', 'Avec success');     
-       return redirect()->route('produitList');
-   }
 
 
 
-
-}
+ }
 
     /**
      * Remove the specified resource from storage.

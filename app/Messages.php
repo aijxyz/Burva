@@ -2,28 +2,27 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
-class SortieStock extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Messages extends Model
 {
     //
-     //
-     use Notifiable;
-    
+
+
+    use Notifiable;
+   
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-         'id','dateSortie','dateSaisie','QSortant','observ','centre','motif','produit_id','paysAt'
-               
-    ];
-
-
-   
-
+        'id', 'message','autorisation','date_envoie', 'profil', 'user_id','paysAt' ,'client_id'        
+    
+          ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -31,26 +30,16 @@ class SortieStock extends Model
      * @var array
      */
     protected $hidden = [ 
-         'remember_token',
+        'id', 'remember_token',
     ];
-
+ 
     /**
      * The attributes that should be cast to native types.
-     * 
+     *
      * @var array
      */
     protected $casts = [
         'name_at' => 'datetime',
     ];
-
-    
-
- 
-       public function produit()
-    {
-
-        return $this->belongsTo('App\Produit');
-    }
-  
 }
  

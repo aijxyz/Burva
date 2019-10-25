@@ -6,7 +6,7 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Utilisateur</div>
+                <div class="card-header">{{ Auth::user()->name }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,7 +15,8 @@
                         </div>
                     @endif
 
-                    Vous êtes connectés!
+                    Bienvenu aux service {{ Auth::user()->profil }} !
+
                 </div>
             </div>
         </div>

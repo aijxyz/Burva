@@ -29,7 +29,7 @@
              
              <!-- /.row -->
         <div class="row mt-5">
-              <div class="card">
+            <div class="card">
               <div class="card-header">
             <h6 class="card-title">Fournisseur 
                 <div class="card-tools" style="text-align: right;">
@@ -135,7 +135,7 @@
 
 
 <div class="modal fade" id="ajout" tabindex="-1" role="dialog" aria-labelledby="ajoutlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="ajoutLabel">Enregistrement</h5>
@@ -564,7 +564,7 @@
                            },
                          },
 
-        "scrollY": "200px",
+        "scrollY": "400px",
         "scrollX": "100%",
       // "scrollXInner": "110%"
         "scrollXInner": "100%",    

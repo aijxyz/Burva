@@ -453,7 +453,7 @@
              },
            },
 
-           "scrollY": "300px",
+           "scrollY": "200px",
            "scrollX": "100%",
       // "scrollXInner": "110%"
       "scrollXInner": "100%",    

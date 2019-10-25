@@ -113,31 +113,30 @@ Route::get('/entreStockList', 'EntreStockController@show')->name('entreStockList
 Route::delete('/entreStockSupp', 'EntreStockController@destroy')->name('entreStockSupp');
 Route::post('/entreStockAjout', 'EntreStockController@store')->name('entreStockAjout');
 Route::patch('/entreStockModifier', 'EntreStockController@update')->name('entreStockModifier');
+Route::get('/comp', 'EntreStockController@comp')->name('comp');
+Route::get('/compenstock', 'EntreStockController@compEnstock')->name('compenstock');
+
 
 Route::get('/sortieStockList', 'SortieStockController@show')->name('sortieStockList');
 Route::delete('/sortieStockSupp', 'SortieStockController@destroy')->name('sortieStockSupp');
 Route::post('/sortieStockAjout', 'SortieStockController@store')->name('sortieStockAjout');
 Route::patch('/sortieStockModifier', 'SortieStockController@update')->name('sortieStockModifier');
+Route::get('/compenstocks', 'SortieStockController@compEnstocks')->name('compenstocks');
 
-Route::get('/comp', 'EntreStockController@comp')->name('comp');
 
-Route::get('/compenstock', 'EntreStockController@compEnstock')->name('compenstock');
+Route::get('/clientList', 'ClientController@show')->name('clientList');
+Route::delete('/clientSupp', 'ClientController@destroy')->name('clientSupp');
+Route::post('/clientAjout', 'ClientController@store')->name('clientAjout');
+Route::patch('/clientModifier', 'ClientController@update')->name('clientModifier');
 
-Route::get('/vehiculeList', 'VehiculeController@show')->name('vehiculeList');
-Route::delete('/vehiculeSupp', 'VehiculeController@destroy')->name('vehiculeSupp');
-Route::post('/vehiculeAjout', 'VehiculeController@store')->name('vehiculeAjout');
-Route::patch('/vehiculeModifier', 'VehiculeController@update')->name('vehiculeModifier');
+Route::get('/messageList', 'MessagesController@show')->name('messageList');
+Route::delete('/messageSupp', 'MessagesController@destroy')->name('messageSupp');
+Route::post('/messageAjout', 'MessagesController@store')->name('messageAjout');
+Route::post('/messageAccepter', 'MessagesController@update')->name('messageAccepter');
 
-Route::get('/convoyeurList', 'ConvoyeurController@show')->name('convoyeurList');
-Route::delete('/convoyeurSupp', 'ConvoyeurController@destroy')->name('convoyeurSupp');
-Route::post('/convoyeurAjout', 'ConvoyeurController@store')->name('convoyeurAjout');
-Route::patch('/convoyeurModifier', 'ConvoyeurController@update')->name('convoyeurModifier');
 
-Route::get('/siteList', 'SiteController@show')->name('siteList');
-Route::delete('/siteSupp', 'SiteController@destroy')->name('siteSupp');
-Route::post('/siteAjout', 'SiteController@store')->name('siteAjout');
-Route::patch('/siteModifier', 'SiteController@update')->name('siteModifier');
 
+//Route::resource('fournisseur', 'FournisseurController'); 
 
 
 
