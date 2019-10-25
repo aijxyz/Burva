@@ -121,7 +121,7 @@
 		 <div class="form-group row">          
 		    <label for="idproduit" class="col-md-4 col-form-label text-md-right">{{ __('ref Produit') }}</label>
 		    <div class="col-md-6">     
-		      <select id="idproduit" type="text" class="form-control" name="produit_id"  required autocomplete="idproduit" autofocus>                     
+		      <select id="idproduit" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();' type="text" class="form-control" name="produit_id"  required autocomplete="idproduit" autofocus>                     
 		        <option> </option>  
 		        @foreach($prod as $prods)
 

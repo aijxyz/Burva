@@ -17,10 +17,10 @@
  </select>
 
  
- <div class="col-md-12" style="margin-left:50px; margin-right:50px">                   
+                    
    <!-- /.row -->
-   <div class="row mt-5">
 
+<div class="col-md-12">  
     <div class="card">
       <div class="card-header">
         <h6 class="card-title">Entrée Bordereau
@@ -82,19 +82,19 @@
      </tfoot>               
    </table>                
    <!-- /.card-body -->
-  <div class="form-group row">
+   <div class="form-group row">
      <div class="col-md-3"></div>
      <div class="col-md-3"></div>
      <div class="col-md-3"></div>              
      <div class="col-md-3 border border-dark"><strong>Total entré: {{$som}}  </strong>FCFA</div>
-  </div>
+   </div>
  </div>     
  <!-- /.card -->       
 
 </div><!-- /.row -->
-</div>          
+</div>      
 
-</div>
+
 
 <!-- Denco@-->
 <!-- Modal ajout -->
@@ -420,7 +420,7 @@
              },
            },
 
-           "scrollY": "200px",
+           "scrollY": "400px",
            "scrollX": "100%",
       // "scrollXInner": "110%"
       "scrollXInner": "100%",    
@@ -475,11 +475,11 @@
 
 
 ///script ajout
-  var x = document.getElementById("myForm");
-  x.addEventListener("focusin", myFocusFunction); 
+var x = document.getElementById("myForm");
+x.addEventListener("focusin", myFocusFunction); 
 
 
- function myFocusFunction() {
+function myFocusFunction() {
 
 
   var databack = $("#debut").val();
@@ -512,34 +512,34 @@
 
    var y = document.getElementById("myFormModif");    
 
-    $("#myFormModif").on("change", function() {
+   $("#myFormModif").on("change", function() {
 
-      var databack = $("#myFormModif #debut").val();
-      var databack1 = $("#myFormModif #fin").val();
-      var databack2 = $("#myFormModif #prix").val();
+    var databack = $("#myFormModif #debut").val();
+    var databack1 = $("#myFormModif #fin").val();
+    var databack2 = $("#myFormModif #prix").val();
 
-      if (+databack <= +databack1) {
+    if (+databack <= +databack1) {
 
-        var total = databack2 *((databack1- databack)+1);
-        $('#myFormModif #prixTotal').val(total).css('color', 'black');  
+      var total = databack2 *((databack1- databack)+1);
+      $('#myFormModif #prixTotal').val(total).css('color', 'black');  
 
-      }
+    }
 
-      else{
+    else{
 
-       $('#myFormModif #prixTotal').val("Debut Serie doit être inferieur à Fin Serie").css('color', 'red'); 
+     $('#myFormModif #prixTotal').val("Debut Serie doit être inferieur à Fin Serie").css('color', 'red'); 
 
-     }
-   })   
-
-
-
-  });
+   }
+ })   
 
 
 
+ });
 
-$('#supp').on('show.bs.modal',function(event){
+
+
+
+    $('#supp').on('show.bs.modal',function(event){
 
         // console.log('test test test');
 
@@ -562,7 +562,7 @@ $('#supp').on('show.bs.modal',function(event){
 
 
 
-$('#modifier').on('show.bs.modal',function(event){
+    $('#modifier').on('show.bs.modal',function(event){
           // console.log('test ooooooo');
 
           var button=$(event.relatedTarget)

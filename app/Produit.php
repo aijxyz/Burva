@@ -56,12 +56,6 @@ class Produit extends Model
         
     }
 
-     public function sortieStock()
-    {
-        return $this->hasMany('App\SortieStock');
-        
-    }
-
     public function fournisseur()
         {
         return $this->belongsTo('App\Fournisseur');

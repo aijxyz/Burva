@@ -23,10 +23,10 @@
     <!-- css local  -->
     <link href="{{ asset('css/style21.css') }}" rel="stylesheet">
      <link href="{{ asset('DataTables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquerymCustomScrollbar.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/jquerymCustomScrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('multiple-select/dist/multiple-select.css') }}" rel="stylesheet">
-   <!-- <link href="{{ asset('bootstrap-select\dist\css\bootstrap-select.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('bootstrap-select\dist\css\bootstrap-select.css') }}" rel="stylesheet">
     
     <!--<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">-->
 
@@ -92,7 +92,11 @@
                 </li>
 
                 <li>
-                   <a href='convoyeur.php'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span>
+                   <a href='/convoyeurList'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span>
+                  </a>
+                </li>
+                <li>
+                   <a href='/siteList'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Site</span>
                   </a>
                 </li>
                 <li>
@@ -319,7 +323,7 @@
                     <a href="#iop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Véhicules</a>
                     <ul class="collapse list-unstyled" id="iop">
                         <li>
-                            <a href="#">Véhicule</a>
+                            <a href="/vehiculeList">Véhicule</a>
                         </li>
                         <li>
                             <a href="#">Entretient véhicule</a>
@@ -327,284 +331,24 @@
                     </ul>
                 </li>
 
-                 
-          @elseif(Auth::user()->profil ==='Directeur commercial' || Auth::user()->profil ==='Directeur général') 
-              <li>
-                <a href='/clientList'><img src="{{ asset('icons/client.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Client</span></a>
-              </li> 
-               
-                <li>
-                <a href='/messageList'><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Message</span></a>
-              </li> 
-            @elseif(Auth::user()->profil==='Commercial')  
-              <li>
-                <a href='/clientList'><img src="{{ asset('icons/client.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Client</span></a>
-              </li> 
-          <!-- <li>
-                    <a href="#iii" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Chiffre d'affaire</a>
-                    <ul class="collapse list-unstyled" id="iii">
-                        <li>
-                            <a href="#">Tarification</a>
-                        </li>
-                        <li>
-                            <a href="#">Degradation</a>
-                        </li>
-                        <li>
-                            <a href="#">Factures</a>
-                        </li>
-                        <li>
-                            <a href="#">Règlement facture</a>
-                        </li>
-                    </ul>
-                </li> 
-                
-                   <li>
-                    <a href="#iii" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Etat</a>
-                    <ul class="collapse list-unstyled" id="iii">
-                        <li>
-                            <a href="#">Tan</a>
-                        </li>
-                        <li>
-                            <a href="#">Deon</a>
-                        </li>
-                        <li>
-                            <a href="#">Fes</a>
-                        </li>
-                        <li>
-                            <a href="#">Règlere</a>
-                        </li>
-                    </ul>
-                </li>
-
-             
-
- -->
-      @elseif(Auth::user()->profil==='Ressources humaines')  
-              <li>
-                    <a href="#pageSubmenuuu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/personnel.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Personnel</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenuuu">
-                        <li>
-                            <a href="#">Personnel</a>
-                        </li>
-                        <li>
-                            <a href="#">Heure supplémentaire</a>
-                        </li>
-                        <li>
-                            <a href="#">Etat</a>
-                        </li>
-                    </ul>
-                </li>
-       @elseif(Auth::user()->profil==='Transport')  
-         <li>
-            <a href='/clientList'><img src="{{ asset('icons/Vehicule.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Vehicule</span></a>
-         </li> 
-         <li>
-                <a href='/clientList'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span></a>
-         </li> 
-         <li>
-                <a href='/clientList'><img src="{{ asset('icons/client.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Client</span></a>
-        </li> 
-
-        <li>
-                <a href='/clientList'><img src="{{ asset('icons/site.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Site</span></a>
-        </li> 
-         <li>
-                    <a href="#ageSubmenuuuii" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/tourne.png') }}" alt="Italian Trulli" style="height: 20px;margin: -1px 7px;">Tournée</a>
-                    <ul class="collapse list-unstyled" id="ageSubmenuuuii">
-                        <li>
-                            <a href="#">Conteneur</a>
-                        </li>
-                        <li>
-                            <a href="#">Départ tournée</a>
-                        </li>
-                        <li>
-                            <a href="#">Arrivée tournée</a>
-                        </li>
-                        <li>
-                            <a href="#">Entretien Vehicule</a>
-                        </li>
-                        <li>
-                            <a href="#">Etat borderau</a>
-                        </li>
-                        <li>
-                            <a href="#geSubmenuuui" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Etat tournée</a>
-                            <ul class="collapse list-unstyled" id="geSubmenuuui">
-                            
-                                <li>
-                                    <a href="#">Par période</a>
-                                </li>
-                                <li>
-                                    <a href="#">Par site</a>
-                                </li>
-                                <li>
-                                    <a href="#">Par client</a>
-                                </li>
-                                  <li>
-                                    <a href="#">Par vehicule</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                         <a href="#pageSubmenuuu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Carburant tournée</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenuuu">
-                            
-                                <li>
-                                    <a href="#">Ticket carburant</a>
-                                </li>
-                                <li>
-                                    <a href="#">Carburant comptant</a>
-                                </li>
-                                <li>
-                                    <a href="#">Prevision carburant</a>
-                                </li>
-                            </ul>
-                        </li>
-                      </ul>
-                   </li>
-
-        @elseif(Auth::user()->profil==='Securité') 
-
-                <li>
-                    <a href="#"><img src="{{ asset('icons/Group 2.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Main courante</a>
-                </li>
-          @elseif(Auth::user()->profil==='Regulation')
-                <li>
-                    <a href="#"><img src="{{ asset('icons/fournisseur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Bordereau</a>
+                @elseif(Auth::user()->profil==='Commercial')         
+                   
+                <li><a href='convoyeur.php'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span></a>
                 </li>
                 <li>
-                    <a href="#"><img src="{{ asset('icons/vigilometrie.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Sécuripack</a>
-                </li>
-                <li>
-                    <a href="#"><img src="{{ asset('icons/degradation.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Scellé</a>
-               </li>
-
-                   <li>
-                    <a href="#pageSubmenuuu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/product.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Colis</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenuuu">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/client.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Client</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Colis entré</a>
+                            <a href="#">Client</a>
                         </li>
                         <li>
-                            <a href="#">Colis sortie</a>
-                        </li>
-                        
-                    </ul>
-                </li>
-
-
-                <li>
-                    <a href="#"><img src="{{ asset('icons/depot.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Confirm reception client</a>
-                </li>
-
-
-                  <li>
-                    <a href="#iop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Etat</a>
-                    <ul class="collapse list-unstyled" id="iop">
-                      
-                        <li>
-                            <a href="#">Scellé vendu</a>
-                        </li>
-                        <li>
-                            <a href="#">Scellé utilisé</a>
-                        </li>
-                        <li>
-                            <a href="#">Sécuripack vendu</a>
-                        </li>
-                        <li>
-                            <a href="#">Sécuripack  utilisé</a>
-                        </li>
-                        
-                    </ul>
-                </li>
-               
-
-            
-                </ul>
-            </li>
-              @elseif(Auth::user()->profil==='Logistique')
-               <li>
-                    <a href="#i" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Achat</a>
-                    <ul class="collapse list-unstyled" id="i">
-                        <li>
-                            <a href="/entreStockList">Fournisseur</a>
-                        </li>
-                        <li>
-                            <a href="/sortieStockList">Produits</a>
-                        </li>
-                        <li>
-                            <a href="/produitList">Entre stock</a>
-                        </li>
-                         <li>
-                            <a href="/produitList">Sortie stock</a>
-                        </li>
-
-                          <li>
-                            <a href="/produitList">Etat stock</a>
+                            <a href="#">Confirmation réception client</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                   <a href='convoyeur.php'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Entretien Vehicule</span>
-                  </a>
+                     <a href="/fournisseurList"><img src="{{ asset('icons/operatrice.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Fournisseur</a>
                 </li>
-                 <li>
-                    <a href="#Submenuuuiii" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Fournitures</a>
-                    <ul class="collapse list-unstyled" id="Submenuuuiii">
-                        <li>
-                            <a href="/entreBordereauList">Entrée bordereau</a>
-                        </li>
-                        <li>
-                            <a href="/sortieBordereauList">Sortie bordereau</a>
-                        </li>
-                        <li>
-                            <a href="/entreSecuripackList">Entrée sécuripack</a>
-                        </li>
-                        <li>
-                            <a href="/sortieSecuripackList">Sortie sécuripack</a>
-                        </li>
-                        <li>
-                            <a href="#">Entrée carnet de caisse</a>
-                        </li>
-                        <li>
-                            <a href="#">Sortie carnet de caisse</a>
-                        </li>
-                     
-                      <!--  <li>
-                            <a href="#">Bon de commande</a>
-                        </li>-->
-                        <li>
-                            <a href="/entreBonComdList">Entrée bon de commande</a>
-                        </li>
-                        <li>
-                            <a href="/sortieBonComdList">Sortie bon de commande</a>
-                        </li>
-                        <li>
-                            <a href="/entreTicketList">Entrée ticket visiteur</a>
-                        </li>
-                        <li>
-                            <a href="/sortieTicketList">Sortie ticket visiteur</a>
-                        </li>
-                    </ul>
-                </li> 
-                    <li>
-                    <a href="#pageSubmenuuuii" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/dab.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">DAB</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenuuuii">
-                        <li>
-                            <a href="/entreMaintenanceList">Entrée fiche de maintenace DAB</a>
-                        </li>
-                        <li>
-                            <a href="/sortieMaintenanceList">Sortie fiche de maintenace DAB</a>
-                        </li>
-                         <li>
-                            <a href="/entreApprovisList">Entrée approvisionnement DAB</a>
-                        </li>
-                        <li>
-                            <a href="/sortieApprovisList">Sortie approvisionnement DAB</a>
-                        </li>
-                    </ul>
-                </li>
-
 
                 @else
 
@@ -794,7 +538,7 @@
     <!--<script src="{{ asset('js/ajaxpopper.js') }}"></script>-->
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}" defer></script>
     <script src="{{ asset('DataTables/js/jquery.dataTables.min.js') }}" defer></script> 
-    <!--<script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}" defer></script>-->
+    <script src="{{ asset('bootstrap-select/dist/js/bootstrap-select.js') }}" defer></script>
 
 
  
