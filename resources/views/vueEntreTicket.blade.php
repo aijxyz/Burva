@@ -10,7 +10,7 @@
    <option value="1">Debut serie</option> 
    <option value="2">Fin serie</option>
    <option value="3">Date entrée</option>
-   <option value="4">Prix unitaire</option> 
+   <option value="4">Prix unitddddaire</option> 
    <option value="5">Fournisseur</option> 
    <option value="6">Prix Total</option> 
    <option value="7">Modif/Supp</option>   
