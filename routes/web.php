@@ -123,7 +123,21 @@ Route::get('/comp', 'EntreStockController@comp')->name('comp');
 
 Route::get('/compenstock', 'EntreStockController@compEnstock')->name('compenstock');
 
-//Route::resource('fournisseur', 'FournisseurController'); 
+Route::get('/vehiculeList', 'VehiculeController@show')->name('vehiculeList');
+Route::delete('/vehiculeSupp', 'VehiculeController@destroy')->name('vehiculeSupp');
+Route::post('/vehiculeAjout', 'VehiculeController@store')->name('vehiculeAjout');
+Route::patch('/vehiculeModifier', 'VehiculeController@update')->name('vehiculeModifier');
+
+Route::get('/convoyeurList', 'ConvoyeurController@show')->name('convoyeurList');
+Route::delete('/convoyeurSupp', 'ConvoyeurController@destroy')->name('convoyeurSupp');
+Route::post('/convoyeurAjout', 'ConvoyeurController@store')->name('convoyeurAjout');
+Route::patch('/convoyeurModifier', 'ConvoyeurController@update')->name('convoyeurModifier');
+
+Route::get('/siteList', 'SiteController@show')->name('siteList');
+Route::delete('/siteSupp', 'SiteController@destroy')->name('siteSupp');
+Route::post('/siteAjout', 'SiteController@store')->name('siteAjout');
+Route::patch('/siteModifier', 'SiteController@update')->name('siteModifier');
+
 
 
 

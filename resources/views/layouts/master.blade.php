@@ -92,7 +92,11 @@
                 </li>
 
                 <li>
-                   <a href='convoyeur.php'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span>
+                   <a href='/convoyeurList'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Convoyeur</span>
+                  </a>
+                </li>
+                <li>
+                   <a href='/siteList'><img src="{{ asset('icons/convoyeur.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;"><span>Site</span>
                   </a>
                 </li>
                 <li>
@@ -319,7 +323,7 @@
                     <a href="#iop" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><img src="{{ asset('icons/msg.png') }}" alt="Italian Trulli" style="height: 17px;margin: -1px 7px;">Véhicules</a>
                     <ul class="collapse list-unstyled" id="iop">
                         <li>
-                            <a href="#">Véhicule</a>
+                            <a href="/vehiculeList">Véhicule</a>
                         </li>
                         <li>
                             <a href="#">Entretient véhicule</a>
@@ -431,7 +435,7 @@
 
               </nav>
 
-            <div class="container" >
+            <div class="container-fluid" >
                 @yield('content')
             </div>
         </div>
